@@ -1,0 +1,5 @@
+# Lint only for real bugs: syntax errors (E9) and pyflakes checks (F: unused imports and
+# variables, undefined names). The ruff version is pinned in requirements-dev.txt because
+# newer ruff releases change the default rule set, which is what broke the first CI run.
+[lint]
+select = ["E9", "F"]

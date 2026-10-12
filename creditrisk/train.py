@@ -62,7 +62,7 @@ def _importance_plot(imp: pd.Series, path: Path) -> None:
 
 
 def _model_card(m: dict) -> str:
-    t, v, c = m["test"], m["validation"][m["champion"]], m["confusion_test"]
+    t, c = m["test"], m["confusion_test"]
     rows = "\n".join(
         f"| {n} | {r['cv_auc_mean']:.4f} +/- {r['cv_auc_std']:.4f} | {r['validation']['roc_auc']:.4f} | "
         f"{r['validation']['pr_auc']:.4f} | {r['validation']['ks']:.3f} | {r['validation']['brier']:.4f} |"

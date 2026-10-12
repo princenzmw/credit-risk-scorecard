@@ -1,11 +1,13 @@
-# Credit-Risk Scorecard
+# Credio: Credit-Risk Scorecard
+
+![tests](https://github.com/princenzmw/credit-risk-scorecard/actions/workflows/ci.yml/badge.svg)
 
 Predicts the probability that a borrower becomes 90+ days past due within two years, using the
 [Give Me Some Credit](https://www.kaggle.com/competitions/GiveMeSomeCredit) data (150,000 borrowers, 6.7 % default rate).
 Built as a leak-free, tested, reproducible pipeline with a calibrated model, cost-based decision threshold,
 risk bands and a Streamlit scoring app.
 
-**Live demo:** _add your Streamlit Cloud URL here after deploying_
+**Live demo:** https://credio.streamlit.app/ (free hosting: the first load after a quiet period can be slow)
 
 ## Results (single evaluation on a held-out test set of 30,000 borrowers)
 
@@ -36,13 +38,32 @@ The 5:1 cost ratio is an **assumption**: change `COST_FN` in `creditrisk/config.
   holds a huge absolute figure (median about 1,159) instead of a ratio when income is missing. The pipeline handles each explicitly.
 - **Gradient boosting beat logistic regression** (validation ROC-AUC 0.865 vs 0.823), so it is the champion.
   The rule is written down in advance: keep the simpler scorecard unless the challenger wins by more than 0.005.
-- **Class weights hurt probability quality.** `class_weight="balanced"` left ROC-AUC unchanged
-  (logistic 0.8232 -> 0.8247, boosting 0.8651 -> 0.8647) but roughly tripled the Brier score
-  (0.052 -> 0.153 and 0.049 -> 0.140), so the predicted probabilities stopped meaning anything.
-  See `experiments/resampling_check.py` and `reports/resampling_check.csv`. SMOTE has **not** been evaluated yet:
-  install `imbalanced-learn` and run the script to add those rows.
+- **Rebalancing did not help, and it damaged the probabilities.** On the validation set (`experiments/resampling_check.py`,
+  results in `reports/resampling_check.csv`):
+
+  | Variant | ROC-AUC | PR-AUC | Brier (lower is better) |
+  |---|---|---|---|
+  | Logistic, no resampling | 0.8232 | 0.3542 | 0.0516 |
+  | Logistic, class weights | 0.8247 | 0.3554 | 0.1529 |
+  | Logistic, SMOTE | 0.8242 | 0.3542 | 0.1535 |
+  | Boosting, no resampling | **0.8651** | **0.3936** | **0.0493** |
+  | Boosting, class weights | 0.8647 | 0.3914 | 0.1398 |
+  | Boosting, SMOTE | 0.8457 | 0.3504 | 0.0601 |
+
+  Both class weights and SMOTE tripled the logistic Brier score because they distort the predicted probabilities,
+  and SMOTE made boosting worse on every metric. So the final model uses no resampling. SMOTE here is my own
+  implementation (`creditrisk/resampling.py`, tested); installing `imbalanced-learn` adds a cross-check row.
 - **Utilisation of credit limits is the strongest signal** (permutation importance, `reports/figures/permutation_importance.png`),
   followed by 90+ day and 30-59 day late counts.
+
+## Screenshots
+
+![Scoring tab](reports/figures/app_score.png)
+![Performance tab](reports/figures/app_performance.png)
+
+| Calibration (test set) | Permutation importance |
+|---|---|
+| ![Calibration](reports/figures/calibration_test.png) | ![Importance](reports/figures/permutation_importance.png) |
 
 ## Method
 
@@ -77,10 +98,10 @@ same scikit-learn version; if you use another version, re-run `python -m creditr
 ## Project layout
 
 ```
-creditrisk/   config, data, features, models, metrics, explain, predict, train, eda
+creditrisk/   config, data, features, models, metrics, resampling, explain, predict, train, eda
 app/          Streamlit scoring app (loads the saved model; no training on upload)
-tests/        16 unit tests on synthetic data (no real data needed)
-experiments/  resampling comparison (none / class weights / optional SMOTE)
+tests/        19 unit tests on synthetic data (no real data needed)
+experiments/  resampling comparison (none / class weights / SMOTE)
 models/       saved model, threshold, reference values, metrics
 reports/      model card, data profile, figures
 ```
