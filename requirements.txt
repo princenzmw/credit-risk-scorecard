@@ -1,0 +1,9 @@
+# Versions below are the ones this project was trained and tested with (Python 3.12).
+# The saved model (models/model.joblib) must be loaded with the SAME scikit-learn version.
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+joblib==1.5.3
+tabulate==0.10.0
+streamlit>=1.40,<2

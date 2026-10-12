@@ -1,0 +1,5 @@
+variant,roc_auc,pr_auc,ks,brier
+"Logistic, no resampling",0.8232,0.3542,0.514,0.0516
+"Logistic, class_weight=balanced",0.8247,0.3554,0.5136,0.1529
+"Gradient boosting, no resampling",0.8651,0.3936,0.5723,0.0493
+"Gradient boosting, class_weight=balanced",0.8647,0.3914,0.5699,0.1398

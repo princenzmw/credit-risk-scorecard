@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest>=8
+ruff>=0.6
+imbalanced-learn>=0.12   # optional: only for experiments/resampling_check.py (SMOTE rows)

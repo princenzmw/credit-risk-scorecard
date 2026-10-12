@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+# Raw data is never committed (see data/README.md)
+data/raw/*
+!data/raw/.gitkeep

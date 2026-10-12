@@ -1,0 +1,101 @@
+{
+  "champion": "Gradient boosting (challenger)",
+  "threshold": 0.16,
+  "validation_cost_at_threshold": 6468.0,
+  "base_rate": 0.06684,
+  "candidates": {
+    "Logistic regression (scorecard)": {
+      "cv_auc_mean": 0.822826227342072,
+      "cv_auc_std": 0.007209726525492943,
+      "validation": {
+        "roc_auc": 0.8232414231433384,
+        "pr_auc": 0.3542233824977056,
+        "ks": 0.5139891831414498,
+        "brier": 0.05158017607962377,
+        "base_rate": 0.06683333333333333
+      }
+    },
+    "Gradient boosting (challenger)": {
+      "cv_auc_mean": 0.8641988243125868,
+      "cv_auc_std": 0.003478587322444156,
+      "validation": {
+        "roc_auc": 0.8650756035433831,
+        "pr_auc": 0.39358921269841823,
+        "ks": 0.572309447848498,
+        "brier": 0.049344990699527344,
+        "base_rate": 0.06683333333333333
+      }
+    }
+  },
+  "validation": {
+    "Logistic regression (scorecard)": {
+      "roc_auc": 0.8232414231433384,
+      "pr_auc": 0.3542233824977056,
+      "ks": 0.5139891831414498,
+      "brier": 0.05158017607962377,
+      "base_rate": 0.06683333333333333
+    },
+    "Gradient boosting (challenger)": {
+      "roc_auc": 0.8650756035433831,
+      "pr_auc": 0.39358921269841823,
+      "ks": 0.572309447848498,
+      "brier": 0.049344990699527344,
+      "base_rate": 0.06683333333333333
+    }
+  },
+  "test": {
+    "roc_auc": 0.8687819832451378,
+    "pr_auc": 0.4071638080741181,
+    "ks": 0.5844395084800946,
+    "brier": 0.048638308903484286,
+    "base_rate": 0.06683333333333333
+  },
+  "confusion_test": {
+    "threshold": 0.16,
+    "tp": 1147,
+    "fp": 2053,
+    "fn": 858,
+    "tn": 25942,
+    "recall": 0.5720698254364089,
+    "precision": 0.3584375,
+    "decline_rate": 0.10666666666666667
+  },
+  "bands_test": [
+    {
+      "band": "Low",
+      "loans": 17403,
+      "observed_default_rate": 0.011377348732977072
+    },
+    {
+      "band": "Moderate",
+      "loans": 6432,
+      "observed_default_rate": 0.04959577114427861
+    },
+    {
+      "band": "High",
+      "loans": 3497,
+      "observed_default_rate": 0.12810980840720618
+    },
+    {
+      "band": "Very high",
+      "loans": 2668,
+      "observed_default_rate": 0.38980509745127434
+    }
+  ],
+  "assumptions": {
+    "cost_fn": 5.0,
+    "cost_fp": 1.0,
+    "challenger_margin": 0.005
+  },
+  "environment": {
+    "python": "3.12.10",
+    "sklearn": "1.8.0",
+    "pandas": "3.0.2",
+    "numpy": "2.4.4"
+  },
+  "n_rows": {
+    "train": 90000,
+    "validation": 30000,
+    "test": 30000
+  }
+}
