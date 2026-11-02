@@ -80,7 +80,7 @@ Full details and numbers: [`reports/model_card.md`](reports/model_card.md) and [
 ## Run it
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/princenzmw/credit-risk-scorecard.git
 cd credit-risk-scorecard
 python -m venv .venv
 # Windows: .venv\Scripts\activate      macOS/Linux: source .venv/bin/activate
@@ -112,6 +112,12 @@ reports/      model card, data profile, figures
 - Age is an input. Many jurisdictions restrict age in lending decisions, so this is a modelling exercise, not a compliant policy.
 - No fairness analysis; rejected applicants are absent from the data (selection bias).
 - The saved model was trained on the training split only (not refit on train + validation).
+
+## Author
+
+**Prince NZAMUWE**  
+BSc Data Science & Analytics, USIU-Africa · Mastercard Foundation Scholar  
+Portfolio: [nzamuwe.com](https://nzamuwe.com) · GitHub: [@princenzmw](https://github.com/princenzmw)
 
 ## License
 
