@@ -7,7 +7,7 @@ Predicts the probability that a borrower becomes 90+ days past due within two ye
 Built as a leak-free, tested, reproducible pipeline with a calibrated model, cost-based decision threshold,
 risk bands and a Streamlit scoring app.
 
-**Live demo:** https://credio.streamlit.app/ (free hosting: the first load after a quiet period can be slow)
+**Live demo:** https://credio.nzamuwe.com/
 
 ## Results (single evaluation on a held-out test set of 30,000 borrowers)
 
