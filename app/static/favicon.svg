@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#0f172a"/>
+  <!-- Decision Gauge Arc -->
+  <path d="M 8.2 22.5 A 9 9 0 1 1 23.8 22.5" stroke="#f8fafc" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Calibration Benchmark Scale Ticks -->
+  <path d="M 16 9 V 11" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M 10.5 14.5 L 12 15.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M 21.5 14.5 L 20 15.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Calibrated Decision Threshold Needle -->
+  <path d="M 16 18 L 20.5 10.5" stroke="#38bdf8" stroke-width="2.0" stroke-linecap="round"/>
+  <!-- Decision Pivot Node -->
+  <circle cx="16" cy="18" r="2" fill="#38bdf8"/>
+  <!-- Horizontal Baseline -->
+  <path d="M 7 26 H 25" stroke="#64748b" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

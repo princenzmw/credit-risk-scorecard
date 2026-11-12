@@ -17,7 +17,13 @@ from creditrisk.explain import occlusion_contributions  # noqa: E402
 from creditrisk.metrics import assign_band  # noqa: E402
 from creditrisk.predict import load_artifacts  # noqa: E402
 
-st.set_page_config(page_title="Credit-Risk Scorecard", page_icon="📊", layout="wide")
+ICON_PATH = Path(__file__).resolve().parent / "static" / "favicon.svg"
+
+st.set_page_config(
+    page_title="Credio — AI-Assisted Credit Decisioning",
+    page_icon=str(ICON_PATH),
+    layout="wide",
+)
 
 FRIENDLY = {
     "RevolvingUtilizationOfUnsecuredLines": "Credit-card utilisation",
