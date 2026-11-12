@@ -1,0 +1,10 @@
+name = "credio-og-proxy"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# To enable on credio.nzamuwe.com:
+# 1. Flip DNS record for credio.nzamuwe.com in Cloudflare Dashboard from DNS-only (Grey Cloud) to Proxied (Orange Cloud).
+# 2. Add custom domain or route in Cloudflare Workers:
+# routes = [
+#   { pattern = "credio.nzamuwe.com/*", zone_name = "nzamuwe.com" }
+# ]
